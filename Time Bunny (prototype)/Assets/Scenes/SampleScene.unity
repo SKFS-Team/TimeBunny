@@ -1116,9 +1116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  runSpeed: 7
   normalSpeed: 5
   CntrlSpeed: 3
-  jumpForce: 7
+  jumpForce: 10
 --- !u!114 &938819241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,7 +1583,6 @@ GameObject:
   - component: {fileID: 1338052553}
   - component: {fileID: 1338052557}
   - component: {fileID: 1338052558}
-  - component: {fileID: 1338052559}
   - component: {fileID: 1338052560}
   m_Layer: 0
   m_Name: PlatformToMove
@@ -1698,19 +1698,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1338052559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338052552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73d326fc880d7a4ca03f237172a4da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!95 &1338052560
 Animator:
   serializedVersion: 4

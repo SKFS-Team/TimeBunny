@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] private float speed;
+    [SerializeField] private float runSpeed;
     [SerializeField] private float normalSpeed;
     [SerializeField] private float CntrlSpeed;
     public float jumpForce;
@@ -29,22 +30,31 @@ public class Movement : MonoBehaviour
             rb.AddForce(moveY * transform.forward * speed);
         }
 
-        rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -speed, speed));
-
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             canJump = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = runSpeed;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = normalSpeed;
+        }
+
         if (Input.GetKey(KeyCode.LeftControl))
         {
             speed = CntrlSpeed;
         }
-        else
+        else if(Input.GetKeyUp(KeyCode.LeftControl))
         {
             speed = normalSpeed;
         }
+
+        rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -speed, speed));
     }
 
     private void OnCollisionEnter(Collision collision)

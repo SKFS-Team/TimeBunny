@@ -5,11 +5,11 @@ using UnityEngine;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    private float Speed = 25;
+    private float Speed = 15;
     private bool canDash = true;
     private void Update()
     {
-        if(Input.GetMouseButtonDown(2) && canDash && Camera.main.transform.rotation.x < 0 /*&& Camera.main.transform.rotation.x < -15*/)
+        if(Input.GetMouseButtonDown(2) && canDash /*&& Camera.main.transform.rotation.x < 0 /*&& Camera.main.transform.rotation.x < -15*/)
         {
             canDash = false;
             Invoke("CanDash", 1f);
@@ -22,9 +22,3 @@ public class Dash : MonoBehaviour
         canDash = true;
     }
 }
-
-
-
-
-
-
