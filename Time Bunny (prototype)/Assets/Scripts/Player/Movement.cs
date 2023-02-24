@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -9,7 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float runSpeed;
     [SerializeField] private float normalSpeed;
     [SerializeField] private float CntrlSpeed;
-    public float jumpForce;
+    [SerializeField] private float jumpForce;
     bool canJump = true;
 
     void Start()

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     private bool playerOnPlatform = false;
-    public float speed = 5;
+    [SerializeField] float speed = 5;
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

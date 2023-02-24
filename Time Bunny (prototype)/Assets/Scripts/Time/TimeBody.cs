@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ public class TimeBody : MonoBehaviour
 {
 	bool isRewinding = false;
 
-	public float recordTime = 15f;
+	[SerializeField] private float recordTime = 15f;
 
 	List<PointInTime> pointsInTime;
 

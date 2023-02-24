@@ -359,6 +359,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/InteractionObjects/MovingPlatform.cs"
 "Assets/Scripts/InteractionObjects/PlatformButton.cs"
+"Assets/Scripts/InteractionObjects/Telekinesis.cs"
 "Assets/Scripts/Player/CameraController.cs"
 "Assets/Scripts/Player/Dash.cs"
 "Assets/Scripts/Player/Movement.cs"
