@@ -357,13 +357,15 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Scripts/CameraController.cs"
-"Assets/Scripts/Dash.cs"
-"Assets/Scripts/Movement.cs"
-"Assets/Scripts/PointInTime.cs"
-"Assets/Scripts/TimeBody.cs"
-"Assets/Scripts/TimeChange.cs"
-"Assets/Scripts/TimeStop.cs"
+"Assets/Scripts/InteractionObjects/MovingPlatform.cs"
+"Assets/Scripts/InteractionObjects/PlatformButton.cs"
+"Assets/Scripts/Player/CameraController.cs"
+"Assets/Scripts/Player/Dash.cs"
+"Assets/Scripts/Player/Movement.cs"
+"Assets/Scripts/Time/PointInTime.cs"
+"Assets/Scripts/Time/TimeBody.cs"
+"Assets/Scripts/Time/TimeChange.cs"
+"Assets/Scripts/Time/TimeStop.cs"
 -langversion:9.0
 
 /deterministic
