@@ -11,7 +11,7 @@ public class PlatformButton : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         OpenGameObject.SetBool("Open", true);
         rend.material.color = HoverColor;

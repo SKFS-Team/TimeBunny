@@ -1,14 +1,29 @@
 using UnityEngine;
-
 public class Movement : MonoBehaviour
 {
-    Rigidbody rb;
+    //Starter
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float normalSpeed;
     [SerializeField] private float CntrlSpeed;
     [SerializeField] private float jumpForce;
+   /* [Header("OnGround")]
+    [SerializeField] private float groundDrag;
+    [SerializeField] private float groundSpeed;
+    [SerializeField] private float groundNormalSpeed;
+    [SerializeField] private float groundRunSpeed;
+    [SerializeField] private float groundCnrlSpeed;
+    [Header("OnAir")]
+    [SerializeField] private float airDrag;
+    [SerializeField] private float airSpeed;
+    [SerializeField] private float airNormalSpeed;
+    [SerializeField] private float airRunSpeed;
+    [SerializeField] private float airCntrlSpeed;
+
+    [Header("Dash")]
+    [SerializeField] private Dash dashScript;*/
     bool canJump = true;
+    Rigidbody rb;
 
     void Start()
     {
@@ -57,6 +72,9 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        canJump = true;
+        if (collision.gameObject.tag == "Ground")
+        {
+            canJump = true;         
+        }
     }
 }
