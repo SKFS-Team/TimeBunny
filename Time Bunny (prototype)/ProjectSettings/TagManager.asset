@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Telekinesible
   - Ground
+  - ClimbWall
   layers:
   - Default
   - TransparentFX
