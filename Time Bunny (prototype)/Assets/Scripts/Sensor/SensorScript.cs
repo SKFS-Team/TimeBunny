@@ -9,14 +9,12 @@ public class SensorScript : MonoBehaviour
     [SerializeField] private Color ActivatedColor;
     [SerializeField] private bool isSingleTime;
     private Renderer rend;
+    private Color startColor;
     private bool isUsed;
     void Start()
     {
         rend = GetComponent<Renderer>();
-    }
-    void Update()
-    {
-        
+        startColor = rend.material.color;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +26,14 @@ public class SensorScript : MonoBehaviour
                 gameobjectToAffect.GetComponent<ObjectsAffectedBySensorsScript>().isActivated = true;
                 if(isSingleTime) { isUsed = true; }
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Telekinesible")
+        {
+            rend.material.color = startColor;
         }
     }
 }
