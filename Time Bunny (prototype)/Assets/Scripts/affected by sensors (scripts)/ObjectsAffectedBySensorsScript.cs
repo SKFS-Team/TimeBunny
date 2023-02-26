@@ -11,9 +11,10 @@ public class ObjectsAffectedBySensorsScript : MonoBehaviour
     [SerializeField] private Vector3 endPos;
     [SerializeField] private Vector3 movePerTick;
     [SerializeField] private float Seconds;
-    public int counter;
+    [SerializeField] private int amountOfTicks;
+    private int counter;
     private bool isLowered;
-    public bool isActive;
+    private bool isActive;
     // placeholder function
 
     void Update()
@@ -35,24 +36,24 @@ public class ObjectsAffectedBySensorsScript : MonoBehaviour
     }
     void TickSet()
     {
-        movePerTick = (endPos - startPos) / 20;
-        Invoke("PosChange", Seconds / 20);
+        movePerTick = (endPos - startPos) / amountOfTicks;
+        Invoke("PosChange", Seconds / amountOfTicks);
     }
     void PosChange()
     {
-        if (counter < 20 && !isLowered) 
+        if (counter < amountOfTicks && !isLowered) 
         {
             counter++;
-            Invoke("PosChange", Seconds / 20);
+            Invoke("PosChange", Seconds / amountOfTicks);
             gameObject.transform.position = transform.position + movePerTick;
         }
-        else if(counter < 20 && isLowered)
+        else if(counter < amountOfTicks && isLowered)
         {
             counter++;
-            Invoke("PosChange", Seconds / 20);
+            Invoke("PosChange", Seconds / amountOfTicks);
             gameObject.transform.position = transform.position - movePerTick;
         }
-        else if(counter == 20)
+        else if(counter == amountOfTicks)
         { 
             if(!isLowered) { isLowered = true; }
             else if(isLowered) { isLowered = false; }
