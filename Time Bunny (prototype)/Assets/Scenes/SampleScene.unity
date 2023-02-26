@@ -1054,6 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 938819235}
   Speed: 550
+  SpeedUp: 25
 --- !u!65 &938819243
 BoxCollider:
   m_ObjectHideFlags: 0
