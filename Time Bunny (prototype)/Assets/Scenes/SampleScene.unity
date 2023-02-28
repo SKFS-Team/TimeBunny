@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4315534}
   - component: {fileID: 4315533}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: DoorRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,8 +1645,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579b1e5ebee86ed48b2b151401e6733c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenGameObject: {fileID: 2143968987}
-  HoverColor: {r: 0, g: 0.50549936, b: 1, a: 0}
+  doorLeftPart: {fileID: 1551642432}
+  doorRightPart: {fileID: 4315531}
+  RotationSpeed: 4
+  HoverColor: {r: 0, g: 0.12460327, b: 1, a: 0}
 --- !u!1 &1338052552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2108,7 @@ GameObject:
   - component: {fileID: 1551642435}
   - component: {fileID: 1551642434}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: DoorLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2433,8 +2435,8 @@ MonoBehaviour:
   startPos: {x: 24.69054, y: 3.575, z: -29.244}
   endPos: {x: 24.69054, y: 0.2, z: -29.244}
   movePerTick: {x: 0, y: 0, z: 0}
-  secondsForMove: 0
-  amountOfTicksForMove: 0
+  secondsForMove: 1
+  amountOfTicksForMove: 1000
   startScale: {x: 0, y: 0, z: 0}
   endScale: {x: 0, y: 0, z: 0}
   scaleChangePerTick: {x: 0, y: 0, z: 0}

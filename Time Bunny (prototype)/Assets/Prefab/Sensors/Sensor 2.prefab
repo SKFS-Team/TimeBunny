@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2159821394879710705}
   - component: {fileID: 2159821394879710706}
   - component: {fileID: 2159821394879710707}
+  - component: {fileID: 935445834065898192}
   m_Layer: 0
   m_Name: Lazer
   m_TagString: Untagged
@@ -99,6 +100,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &935445834065898192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159821394879710710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abde1a4317341840abd1d8c0217cef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectToAffect: {fileID: 0}
+  Tag: inventor
+  TagSeek: Telekinesible
+  TagChange: 
+  ActivatedColor: {r: 0, g: 1, b: 0.10293555, a: 0.5882353}
+  InvertedColor: {r: 0.54568005, g: 0, b: 1, a: 0.5882353}
+  isSingleTime: 0
 --- !u!1 &2159821394935334483
 GameObject:
   m_ObjectHideFlags: 0
