@@ -1102,6 +1102,9 @@ MonoBehaviour:
   normalSpeed: 5
   CntrlSpeed: 3
   jumpForce: 9.5
+  isClimbing: 0
+  isNearClimbWall: 0
+  climbSpeed: 0
 --- !u!114 &938819241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,8 +1133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 938819235}
-  Speed: 550
+  Speed: 200
   SpeedUp: 25
+  ground: 1
 --- !u!65 &938819243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1311,7 +1315,7 @@ MonoBehaviour:
   playerRb: {fileID: 938819235}
   forceUp: 30
   forceForward: 500
-  NeedUp: 0
+  NeedUp: 1
 --- !u!65 &1075129593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2429,9 +2433,13 @@ MonoBehaviour:
   startPos: {x: 24.69054, y: 3.575, z: -29.244}
   endPos: {x: 24.69054, y: 0.2, z: -29.244}
   movePerTick: {x: 0, y: 0, z: 0}
-  Seconds: 1
-  counter: 0
-  isActive: 0
+  secondsForMove: 0
+  amountOfTicksForMove: 0
+  startScale: {x: 0, y: 0, z: 0}
+  endScale: {x: 0, y: 0, z: 0}
+  scaleChangePerTick: {x: 0, y: 0, z: 0}
+  secondsForScale: 0
+  amountOfTicksForScale: 0
 --- !u!1 &2143968985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,6 +2494,67 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &5151910675378126309
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5151910675297769656, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_Name
+      value: SensorVision
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910675297769659, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151910676234158215, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
+      propertyPath: rotationSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df6c9f76de4f8d344a11ffe694af3472, type: 3}
 --- !u!1001 &8277137587704112868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2501,6 +2570,10 @@ PrefabInstance:
       propertyPath: ActivatedColor.a
       value: 0.5882353
       objectReference: {fileID: 0}
+    - target: {fileID: 5207466117774184813, guid: d272b32dbfe9f6f47a7f58728ffca36f, type: 3}
+      propertyPath: gameObjectToAffect
+      value: 
+      objectReference: {fileID: 2067267989}
     - target: {fileID: 5207466117774184813, guid: d272b32dbfe9f6f47a7f58728ffca36f, type: 3}
       propertyPath: gameobjectToAffect
       value: 

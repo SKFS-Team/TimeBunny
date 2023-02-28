@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SensorScript : MonoBehaviour
 {
-    [SerializeField] private GameObject gameobjectToAffect;
+    [SerializeField] private GameObject gameObjectToAffect;
     [SerializeField] private string Tag;
+    [SerializeField] private string TagSeek;
+    [SerializeField] private string TagChange;
     [SerializeField] private Color ActivatedColor;
+    [SerializeField] private Color InvertedColor;
     [SerializeField] private bool isSingleTime;
     private Renderer rend;
     private Color startColor;
@@ -16,24 +20,35 @@ public class SensorScript : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
     }
+    void Update()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(Tag == "Object")
         {
-            if(other.gameObject.tag == "Telekinesible" && !isUsed)
+            if(other.gameObject.tag == TagSeek && !isUsed)
             {
                 rend.material.color = ActivatedColor;
-                gameobjectToAffect.GetComponent<ObjectsAffectedBySensorsScript>().isActivated = true;
-                if(isSingleTime) { isUsed = true; }
+                gameObjectToAffect.GetComponent<ObjectsAffectedBySensorsScript>().isActivated = true;
+                if (isSingleTime) { isUsed = true; }
+                else Invoke("colorChange", .3f);
+            }
+        }
+        else if(Tag == "Inventor")
+        {
+            if(other.gameObject.tag == TagSeek && !isUsed)
+            {
+                rend.material.color = InvertedColor;
+                gameObjectToAffect.GetComponent<ObjectsAffectedBySensorsScript>().Tag = TagChange;
+                if (isSingleTime) { isUsed = true; }
+                else Invoke("colorChange", .5f);
             }
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    void colorChange()
     {
-        if (other.gameObject.tag == "Telekinesible")
-        {
-            rend.material.color = startColor;
-        }
+        rend.material.color = startColor;
     }
 }

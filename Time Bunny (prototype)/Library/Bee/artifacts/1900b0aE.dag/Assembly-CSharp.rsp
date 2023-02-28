@@ -360,6 +360,7 @@
 "Assets/Scripts/affected by sensors (scripts)/ObjectsAffectedBySensorsScript.cs"
 "Assets/Scripts/InteractionObjects/JumpPad.cs"
 "Assets/Scripts/InteractionObjects/MovingPlatform.cs"
+"Assets/Scripts/InteractionObjects/ObjectRotator.cs"
 "Assets/Scripts/InteractionObjects/PlatformButton.cs"
 "Assets/Scripts/InteractionObjects/Telekinesis.cs"
 "Assets/Scripts/Player/CameraController.cs"

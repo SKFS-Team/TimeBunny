@@ -13,19 +13,11 @@ public class PlatformButton : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Telekinesible")
-        {
-            OpenGameObject.SetBool("Open", true);
-            rend.material.color = HoverColor;
-        }
+        rend.material.color = HoverColor;
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Telekinesible")
-        {
-            OpenGameObject.SetBool("Open", false);
-            rend.material.color = startColor;
-        }
+        rend.material.color = startColor;
     }
 }
