@@ -366,6 +366,7 @@
 "Assets/Scripts/Player/CameraController.cs"
 "Assets/Scripts/Player/Dash.cs"
 "Assets/Scripts/Player/Movement.cs"
+"Assets/Scripts/Sensor/SensorPowerSupply.cs"
 "Assets/Scripts/Sensor/SensorScript.cs"
 "Assets/Scripts/Time/PointInTime.cs"
 "Assets/Scripts/Time/TimeBody.cs"
