@@ -100,10 +100,7 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            canJump = true;
-        }
+        canJump = true;
     }
     private void OnTriggerEnter(Collider other)
     {
