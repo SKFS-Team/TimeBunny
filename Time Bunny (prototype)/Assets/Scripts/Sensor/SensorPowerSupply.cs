@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class SensorPowerSupply : MonoBehaviour
 {
-    [SerializeField] private bool needEnergy = true;
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] private ObjectRotator thisGameObjectButton;
+    [SerializeField] private float GiveEnergy;
+    private float maxCapacity = 100f;
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
-        if (collision.gameObject.tag == "Lazer")
+        if (other.gameObject.tag == "Lazer" && maxCapacity > thisGameObjectButton.needEnergy)
         {
-            needEnergy = false;
-            Debug.Log("NeedEnergy == false");
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("Exit");
-        if (collision.gameObject.tag == "Lazer")
-        {
-            needEnergy = true;
-            Debug.Log("NeedEnergy == true");
+            var otherLazer = other.gameObject.GetComponentInChildren<ObjectRotator>();
+            otherLazer.needEnergy -= GiveEnergy;
+            thisGameObjectButton.needEnergy += GiveEnergy;
         }
     }
 }

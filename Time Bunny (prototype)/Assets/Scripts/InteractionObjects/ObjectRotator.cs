@@ -8,14 +8,10 @@ public class ObjectRotator : MonoBehaviour
 
     [SerializeField] private float rotationSpeed = 5.0f;
     public float needEnergy;
-    private Quaternion targetRotation;
+
     private bool isRotating = false;
     private float currentAngle = 0.0f;
 
-    void Start()
-    {
-        targetRotation = GameObjectToRotate.transform.rotation;
-    }
 
     void Update()
     {
@@ -42,15 +38,5 @@ public class ObjectRotator : MonoBehaviour
     void OnMouseUp()
     {
         isRotating = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(1);
-        if (other.gameObject.CompareTag("Lazer"))
-        {
-            Debug.Log(1);
-            needEnergy += 10.0f;
-        }
     }
 }

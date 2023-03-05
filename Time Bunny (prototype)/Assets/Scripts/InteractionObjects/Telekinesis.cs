@@ -1,32 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 public class Telekinesis : MonoBehaviour
 {
-    [SerializeField] bool TelekinesGunIsTaken;
-    [SerializeField] bool ItemTelekinesed;
-    [SerializeField] float distance;
-    [SerializeField] GameObject cam;
-    Rigidbody HitRb;
+    [SerializeField] private float grabDistance, grabSpeed, grabDelta;
+    private bool isGrabbing = false;
+    private Rigidbody grabbedObject;
+
     void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, cam.transform.forward, out hit, distance))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (hit.transform.CompareTag("Telekinesible") && Input.GetKeyDown(KeyCode.T) && TelekinesGunIsTaken && !ItemTelekinesed)
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, grabDistance))
             {
-                ItemTelekinesed = true;
-                HitRb = hit.transform.GetComponent<Rigidbody>();
-                HitRb.isKinematic = true;
-                HitRb.useGravity = false;
-                hit.transform.parent = cam.transform;
+                if(hit.collider.TryGetComponent<Rigidbody>(out grabbedObject))
+                {
+                    grabbedObject.useGravity = false;
+                    grabbedObject.drag = 10f;
+                    isGrabbing = true;
+                }
             }
-            if (hit.transform.CompareTag("Telekinesible") && Input.GetKeyUp(KeyCode.T) && TelekinesGunIsTaken && ItemTelekinesed)
-            {
-                ItemTelekinesed = false;
-                HitRb = hit.transform.GetComponent<Rigidbody>();
-                HitRb.isKinematic = false;
-                HitRb.useGravity = true;
-                hit.transform.parent = null;
-            }
-        }        
+        }
+        if (Input.GetMouseButtonUp(0) && grabbedObject)
+        {
+            grabbedObject.useGravity = true;
+            grabbedObject.drag = 1f;
+            isGrabbing = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isGrabbing)
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = grabDistance;
+            Vector3 targetPosition = transform.position + (Camera.main.transform.forward * grabDistance);
+                //Camera.main.ScreenToWorldPoint(new Vector2(Screen.width/2, Screen.height/2));
+            Vector3 direction = targetPosition - grabbedObject.transform.position;
+            if(Vector3.Distance(targetPosition, grabbedObject.transform.position) > grabDelta)
+                grabbedObject.velocity = direction.normalized * grabSpeed;
+        }
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 public class Movement : MonoBehaviour
 {
-    //Starter
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float normalSpeed;
@@ -10,21 +9,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool isClimbing;
     [SerializeField] private bool isNearClimbWall;
     [SerializeField] private float climbSpeed;
-    /* [Header("OnGround")]
-     [SerializeField] private float groundDrag;
-     [SerializeField] private float groundSpeed;
-     [SerializeField] private float groundNormalSpeed;
-     [SerializeField] private float groundRunSpeed;
-     [SerializeField] private float groundCnrlSpeed;
-     [Header("OnAir")]
-     [SerializeField] private float airDrag;
-     [SerializeField] private float airSpeed;
-     [SerializeField] private float airNormalSpeed;
-     [SerializeField] private float airRunSpeed;
-     [SerializeField] private float airCntrlSpeed;
-
-     [Header("Dash")]
-     [SerializeField] private Dash dashScript;*/
     bool canJump = true;
     Rigidbody rb;
 
