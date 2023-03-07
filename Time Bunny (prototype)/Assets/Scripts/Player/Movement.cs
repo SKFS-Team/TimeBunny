@@ -1,6 +1,7 @@
 using UnityEngine;
 public class Movement : MonoBehaviour
 {
+    //Starter
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float normalSpeed;
@@ -9,6 +10,21 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool isClimbing;
     [SerializeField] private bool isNearClimbWall;
     [SerializeField] private float climbSpeed;
+    /* [Header("OnGround")]
+     [SerializeField] private float groundDrag;
+     [SerializeField] private float groundSpeed;
+     [SerializeField] private float groundNormalSpeed;
+     [SerializeField] private float groundRunSpeed;
+     [SerializeField] private float groundCnrlSpeed;
+     [Header("OnAir")]
+     [SerializeField] private float airDrag;
+     [SerializeField] private float airSpeed;
+     [SerializeField] private float airNormalSpeed;
+     [SerializeField] private float airRunSpeed;
+     [SerializeField] private float airCntrlSpeed;
+
+     [Header("Dash")]
+     [SerializeField] private Dash dashScript;*/
     bool canJump = true;
     Rigidbody rb;
 
@@ -26,8 +42,8 @@ public class Movement : MonoBehaviour
         transform.Rotate(0, rotationX, 0);
         if ((moveX != 0 || moveY != 0) && !isClimbing)
         {
-            rb.AddForce(moveX * transform.right * speed);
-            rb.AddForce(moveY * transform.forward * speed);
+            rb.AddForce(moveX * transform.right * speed * Time.deltaTime);
+            rb.AddForce(moveY * transform.forward * speed * Time.deltaTime);
             rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -speed, speed));
         }
         if (Input.GetKey(KeyCode.W) && isClimbing)

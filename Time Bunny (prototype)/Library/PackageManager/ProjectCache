@@ -3140,6 +3140,7 @@ m_ResolvedPackages:
     - 1.6.0
     - 1.7.0
     - 1.7.1
+    - 1.8.1
     compatible:
     - 1.4.2
     - 1.4.3
@@ -3147,6 +3148,7 @@ m_ResolvedPackages:
     - 1.6.0
     - 1.7.0
     - 1.7.1
+    - 1.8.1
     verified: 1.4.3
   dependencies:
   - name: com.unity.modules.unitywebrequest

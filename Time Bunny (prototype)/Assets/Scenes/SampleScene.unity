@@ -1210,14 +1210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f68ee5ff3436ac44b53f5f6364fb693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  runSpeed: 7
-  normalSpeed: 5
-  CntrlSpeed: 3
+  speed: 1800
+  runSpeed: 2200
+  normalSpeed: 1800
+  CntrlSpeed: 1000
   jumpForce: 9.5
   isClimbing: 0
   isNearClimbWall: 0
-  climbSpeed: 0
+  climbSpeed: 15
 --- !u!114 &938819241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 938819235}
-  Speed: 200
+  Speed: 15
   SpeedUp: 15
 --- !u!65 &938819243
 BoxCollider:
@@ -1274,8 +1274,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabDistance: 10
-  grabSpeed: 55
-  grabDelta: 5
+  grabSpeed: 25
+  grabDelta: 1
+  TelekinesGunIsTaken: 1
+  minThrowForce: 20
+  maxThrowForce: 30
+  mainCamera: {fileID: 963194227}
 --- !u!136 &938819245
 CapsuleCollider:
   m_ObjectHideFlags: 0
