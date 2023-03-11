@@ -1534,7 +1534,6 @@ GameObject:
   - component: {fileID: 938819240}
   - component: {fileID: 938819241}
   - component: {fileID: 938819242}
-  - component: {fileID: 938819243}
   - component: {fileID: 938819244}
   - component: {fileID: 938819245}
   m_Layer: 0
@@ -1645,7 +1644,7 @@ MonoBehaviour:
   jumpForce: 9.5
   isClimbing: 0
   isNearClimbWall: 0
-  climbSpeed: 15
+  climbSpeed: 2
 --- !u!114 &938819241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,19 +1675,6 @@ MonoBehaviour:
   rb: {fileID: 938819235}
   Speed: 15
   SpeedUp: 15
---- !u!65 &938819243
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938819234}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &938819244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,9 +1702,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938819234}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
