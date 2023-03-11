@@ -2,7 +2,7 @@ using UnityEngine;
 public class Telekinesis : MonoBehaviour
 {
     [SerializeField] private float grabDistance, grabSpeed, grabDelta;
-    private bool isGrabbing = false;
+    public bool isGrabbing = false;
     private Rigidbody grabbedObject;
     [SerializeField] bool TelekinesGunIsTaken;
     private float throwForce;
