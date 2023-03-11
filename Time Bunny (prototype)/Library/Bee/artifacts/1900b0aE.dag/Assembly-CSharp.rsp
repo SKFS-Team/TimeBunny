@@ -370,7 +370,6 @@
 "Assets/Scripts/Sensor/SensorScript.cs"
 "Assets/Scripts/Time/PointInTime.cs"
 "Assets/Scripts/Time/TimeBody.cs"
-"Assets/Scripts/Time/TimeChange.cs"
 "Assets/Scripts/Time/TimeStop.cs"
 -langversion:9.0
 

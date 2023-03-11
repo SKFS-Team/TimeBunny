@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 938819237}
   - component: {fileID: 938819235}
   - component: {fileID: 938819240}
-  - component: {fileID: 938819241}
+  - component: {fileID: 938819246}
   - component: {fileID: 938819242}
   - component: {fileID: 938819243}
   - component: {fileID: 938819244}
@@ -1703,21 +1703,6 @@ MonoBehaviour:
   isClimbing: 0
   isNearClimbWall: 0
   climbSpeed: 15
---- !u!114 &938819241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938819234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a0d19df179f8b4d9c9063a4b2a0acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decceleration: 0.5
-  acceleration: 2
-  normalTime: 1
 --- !u!114 &938819242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,6 +1764,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &938819246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938819234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60a838de3d0e9e45ae946b080d49485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decceleration: 0.1
+  acceleration: 10
+  normalTime: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

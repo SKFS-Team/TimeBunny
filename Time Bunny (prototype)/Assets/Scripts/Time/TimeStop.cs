@@ -1,26 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TimeStop : MonoBehaviour
 {
-    /*public static Transform[] points;
+    public static float timeScale = 1f;
 
-    private void Awake()
+    public float decceleration;
+    public float acceleration;
+    public float normalTime;
+
+    private void Start()
     {
-        points = new Transform[transform.childCount];
-        for (int i = 0; i < points.Length; i++)
-        {
-            points[i] = transform.GetChild(i);
-        }
+        timeScale = 1f;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            for (int i = 0; i < points.Length; i++)
-            {
-                points[i]
-            }
+            timeScale = decceleration;
         }
-    }*/
+        else if(Input.GetKeyUp(KeyCode.Q))
+        {
+            timeScale = normalTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            timeScale = acceleration;
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            timeScale = normalTime;
+        }
+    }
 }

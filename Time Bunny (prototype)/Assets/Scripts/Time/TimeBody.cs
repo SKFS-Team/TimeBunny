@@ -21,6 +21,7 @@ public class TimeBody : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		rb.drag = rb.mass / TimeStop.timeScale;
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			StartRewind();

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: "Assets/Scenes/Main Menu (\u043D\u0435\u0437\u0430\u043A\u043D\u0447\u0435\u043D\u0435).unity"
+- path: Assets/Scenes/SampleScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
