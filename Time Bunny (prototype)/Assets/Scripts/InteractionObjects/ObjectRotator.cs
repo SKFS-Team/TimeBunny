@@ -1,15 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectRotator : MonoBehaviour
 {
+    [Header("PlayerScripts")]
+    [Space(5)]
+
+    [SerializeField] private Movement movement;
+    [SerializeField] private CameraController cameraController;
+
+    [Header("Attributes")]
+    [Space(5)]
+
     [SerializeField] private GameObject GameObjectToRotate;
 
     [SerializeField] private float rotationSpeed = 5.0f;
     public float needEnergy;
+    public bool isRotating = false;
 
-    private bool isRotating = false;
+    [Header("UI")]
+    [Space(5)]
+    [SerializeField] private Slider FuelSlider;
+
     private float currentAngle = 0.0f;
 
 
@@ -23,7 +37,8 @@ public class ObjectRotator : MonoBehaviour
             {
                 currentAngle = 0.0f;
             }
-            needEnergy -= Time.deltaTime; 
+            needEnergy -= Time.deltaTime * 5;
+            FuelSlider.value = needEnergy;
         }
     }
 
@@ -32,11 +47,21 @@ public class ObjectRotator : MonoBehaviour
         if (needEnergy > 0)
         {
             isRotating = true;
+
+            movement.enabled = false;
+            cameraController.enabled = false;
+
+            FuelSlider.gameObject.SetActive(true);
         }
     }
 
     void OnMouseUp()
     {
         isRotating = false;
+
+        movement.enabled = true;
+        cameraController.enabled = true;
+
+        FuelSlider.gameObject.SetActive(false);
     }
 }

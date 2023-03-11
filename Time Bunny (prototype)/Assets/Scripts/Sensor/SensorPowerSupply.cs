@@ -12,8 +12,11 @@ public class SensorPowerSupply : MonoBehaviour
         if (other.gameObject.tag == "Lazer" && maxCapacity > thisGameObjectButton.needEnergy)
         {
             var otherLazer = other.gameObject.GetComponentInChildren<ObjectRotator>();
-            otherLazer.needEnergy -= GiveEnergy;
-            thisGameObjectButton.needEnergy += GiveEnergy;
+            if (otherLazer.needEnergy >= GiveEnergy && otherLazer.isRotating)
+            {
+                otherLazer.needEnergy -= GiveEnergy;
+                thisGameObjectButton.needEnergy += GiveEnergy;
+            }
         }
     }
 }
