@@ -7,6 +7,8 @@ TagManager:
   - Telekinesible
   - Ground
   - Lazer
+  - ClimbWall
+  - TelekinesGun
   layers:
   - Default
   - TransparentFX

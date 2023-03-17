@@ -4,7 +4,7 @@ public class Telekinesis : MonoBehaviour
     [SerializeField] private float grabDistance, grabSpeed, grabDelta;
     public bool isGrabbing = false;
     private Rigidbody grabbedObject;
-    [SerializeField] bool TelekinesGunIsTaken;
+    [SerializeField] public bool TelekinesGunIsTaken;
     private float throwForce;
     public float minThrowForce;
     public float maxThrowForce;
