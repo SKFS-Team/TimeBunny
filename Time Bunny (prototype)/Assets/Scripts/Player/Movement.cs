@@ -1,30 +1,30 @@
 using UnityEngine;
 public class Movement : MonoBehaviour
 {
-    //Starter
+    [Header("Attributes")]
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float normalSpeed;
     [SerializeField] private float CntrlSpeed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private bool isClimbing;
-    [SerializeField] private bool isNearClimbWall;
     [SerializeField] private float climbSpeed;
-    /* [Header("OnGround")]
-     [SerializeField] private float groundDrag;
-     [SerializeField] private float groundSpeed;
-     [SerializeField] private float groundNormalSpeed;
-     [SerializeField] private float groundRunSpeed;
-     [SerializeField] private float groundCnrlSpeed;
-     [Header("OnAir")]
-     [SerializeField] private float airDrag;
-     [SerializeField] private float airSpeed;
-     [SerializeField] private float airNormalSpeed;
-     [SerializeField] private float airRunSpeed;
-     [SerializeField] private float airCntrlSpeed;
 
-     [Header("Dash")]
-     [SerializeField] private Dash dashScript;*/
+    [Header("Limites")]
+    [SerializeField] private float maxCtrlVelocity;
+
+    private bool isClimbing;
+    private bool isNearClimbWall;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource PlayerAudioSource;
+    [SerializeField] private AudioClip Walk;
+    private bool CanPLayWalk = true;
+    private bool groud = true;
+
+    [Header("SpeedSensor")]
+    [SerializeField] private float maxSpeed;
+
+
     bool canJump = true;
     Rigidbody rb;
 
@@ -35,6 +35,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        Audio();
+
         float rotationX = Input.GetAxis("Mouse X");
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
@@ -43,7 +45,7 @@ public class Movement : MonoBehaviour
         if ((moveX != 0 || moveY != 0) && !isClimbing)
         {
             rb.AddForce(moveX * transform.right * speed * Time.deltaTime);
-            rb.AddForce(moveY * transform.forward * speed * Time.deltaTime);
+            rb.AddForce(moveY * transform.forward * speed * Time.deltaTime);          
             rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -speed, speed));
         }
         if (Input.GetKey(KeyCode.W) && isClimbing)
@@ -89,6 +91,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             speed = CntrlSpeed;
+            rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxCtrlVelocity, maxCtrlVelocity), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -maxCtrlVelocity, maxCtrlVelocity));
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
@@ -101,19 +104,33 @@ public class Movement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canJump = true;
+        groud = true;
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        groud = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "ClimbWall")
         {
             isNearClimbWall = true;
         }
+        if (other.tag == "SensorSpeed" && rb.velocity.x > maxSpeed || rb.velocity.z > maxSpeed)
+        {
+            Destroy(gameObject);
+        }
     }
+
     private void OnTriggerExit(Collider other)
     {
         MovementSwitch(false);
         isNearClimbWall = false;
     }
+
+
     void MovementSwitch(bool Bool)
     {
         isClimbing = Bool;
@@ -122,5 +139,24 @@ public class Movement : MonoBehaviour
     void VelocityZero()
     {
         rb.velocity = Vector3.zero;
+    }
+
+    void Audio()
+    {
+        if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && groud) 
+        {
+            PlayerAudioSource.clip = Walk;
+            PlayerAudioSource.loop = true;
+            if (CanPLayWalk)
+            {
+                PlayerAudioSource.Play();           
+                CanPLayWalk = false;
+            }
+        }
+        else if (!groud || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        {
+            PlayerAudioSource.Stop();
+            CanPLayWalk = true;
+        }
     }
 }

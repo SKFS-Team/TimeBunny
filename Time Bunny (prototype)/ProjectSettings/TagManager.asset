@@ -9,6 +9,7 @@ TagManager:
   - Lazer
   - ClimbWall
   - TelekinesGun
+  - SensorSpeed
   layers:
   - Default
   - TransparentFX
