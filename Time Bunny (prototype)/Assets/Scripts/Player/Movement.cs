@@ -16,14 +16,13 @@ public class Movement : MonoBehaviour
     private bool isNearClimbWall;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource PlayerAudioSource;
+    [SerializeField] private AudioSource PlayerAudioSource, JumpAudioSource;
     [SerializeField] private AudioClip Walk;
     private bool CanPLayWalk = true;
     private bool groud = true;
 
     [Header("SpeedSensor")]
     [SerializeField] private float maxSpeed;
-
 
     bool canJump = true;
     Rigidbody rb;
@@ -153,10 +152,14 @@ public class Movement : MonoBehaviour
                 CanPLayWalk = false;
             }
         }
-        else if (!groud || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        else if (!groud && canJump == true && !Input.GetKey(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
         {
             PlayerAudioSource.Stop();
             CanPLayWalk = true;
+        }
+        if(Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            JumpAudioSource.Play();
         }
     }
 }

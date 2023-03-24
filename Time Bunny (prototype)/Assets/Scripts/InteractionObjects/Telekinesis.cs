@@ -10,6 +10,10 @@ public class Telekinesis : MonoBehaviour
     public float maxThrowForce;
     public Camera mainCamera;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource Telekenesis;
+    [SerializeField] private AudioClip TelekinesisGrab;
+
     void Update()
     {
         if (Input.GetMouseButtonUp(1) && isGrabbing)
@@ -22,10 +26,13 @@ public class Telekinesis : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit, grabDistance))
             {
                 if (hit.collider.TryGetComponent<Rigidbody>(out grabbedObject))
-                {
+                { 
                     grabbedObject.useGravity = false;
                     grabbedObject.drag = 10f;
                     isGrabbing = true;
+
+                    //Telekenesis.clip = TelekinesisGrab;
+                    //Telekenesis.Play();
                 }
             }
         }
