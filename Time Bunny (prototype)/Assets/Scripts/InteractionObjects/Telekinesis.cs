@@ -2,6 +2,7 @@ using UnityEngine;
 public class Telekinesis : MonoBehaviour
 {
     [SerializeField] private float grabDistance, grabSpeed, grabDelta;
+    private float currectGrabDistance;
     public bool isGrabbing = false;
     private Rigidbody grabbedObject;
     [SerializeField] public bool TelekinesGunIsTaken;
@@ -26,13 +27,8 @@ public class Telekinesis : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit, grabDistance))
             {
                 if (hit.collider.TryGetComponent<Rigidbody>(out grabbedObject))
-                { 
-                    grabbedObject.useGravity = false;
-                    grabbedObject.drag = 10f;
-                    isGrabbing = true;
-
-                    //Telekenesis.clip = TelekinesisGrab;
-                    //Telekenesis.Play();
+                {
+                    GrabObject();
                 }
             }
         }
@@ -46,9 +42,18 @@ public class Telekinesis : MonoBehaviour
     {
         if (isGrabbing)
         {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                currectGrabDistance += 2f;
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                currectGrabDistance -= 2f;
+            }
+
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = grabDistance;
-            Vector3 targetPosition = transform.position + (Camera.main.transform.forward * grabDistance);
+            mousePosition.z = currectGrabDistance;
+            Vector3 targetPosition = transform.position + (Camera.main.transform.forward * currectGrabDistance);
             //Camera.main.ScreenToWorldPoint(new Vector2(Screen.width/2, Screen.height/2));
             Vector3 direction = targetPosition - grabbedObject.transform.position;
             if (Vector3.Distance(targetPosition, grabbedObject.transform.position) > grabDelta)
@@ -62,6 +67,17 @@ public class Telekinesis : MonoBehaviour
         grabbedObject.AddForce(mainCamera.transform.forward * throwForce, ForceMode.Impulse);
         throwForce = minThrowForce;
         LeaveObject();
+    }
+
+    private void GrabObject()
+    {
+        currectGrabDistance = grabDistance;
+        grabbedObject.useGravity = false;
+        grabbedObject.drag = 10f;
+        isGrabbing = true;
+
+        //Telekenesis.clip = TelekinesisGrab;
+        //Telekenesis.Play();
     }
 
     private void LeaveObject()
