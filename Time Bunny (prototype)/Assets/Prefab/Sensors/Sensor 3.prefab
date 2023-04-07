@@ -242,7 +242,6 @@ GameObject:
   - component: {fileID: 2022144506088339657}
   - component: {fileID: 2022144506088339658}
   - component: {fileID: 2022144506088339659}
-  - component: {fileID: 2022144506088339660}
   m_Layer: 0
   m_Name: Lazer
   m_TagString: Untagged
@@ -328,25 +327,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2022144506088339660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022144506088339661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7abde1a4317341840abd1d8c0217cef6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectToAffect: {fileID: 0}
-  Tag: Object
-  TagSeek: Player
-  TagChange: 
-  ActivatedColor: {r: 0, g: 1, b: 0, a: 0.5882353}
-  InvertedColor: {r: 0, g: 0, b: 0, a: 0}
-  isSingleTime: 0
 --- !u!1 &2022144506360659759
 GameObject:
   m_ObjectHideFlags: 0

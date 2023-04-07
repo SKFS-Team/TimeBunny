@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 
     [Header("Limites")]
     [SerializeField] private float maxCtrlVelocity;
+    [SerializeField] private float maxVelocity;
 
     private bool isClimbing;
     private bool isNearClimbWall;
@@ -45,7 +46,7 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(moveX * transform.right * speed * Time.deltaTime);
             rb.AddForce(moveY * transform.forward * speed * Time.deltaTime);          
-            rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -speed, speed));
+            rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxVelocity, maxVelocity), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -maxVelocity, maxVelocity));
         }
         if (Input.GetKey(KeyCode.W) && isClimbing)
         {

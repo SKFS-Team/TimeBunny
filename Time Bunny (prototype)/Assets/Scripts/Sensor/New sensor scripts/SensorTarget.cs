@@ -8,6 +8,8 @@ public class SensorTarget : MonoBehaviour
     [SerializeField] private string funcion;
     public bool funcActivate;
     [SerializeField] private bool isActivated;
+    public bool isObjectInLazer;
+    public bool objectsInParent;
 
     [Header("SensorLazerScriptData")]
     [SerializeField] public SensorLazerScript sensLazScript;
@@ -116,28 +118,32 @@ public class SensorTarget : MonoBehaviour
         transform.position = transform.position + posMove;
         posCounter++;
         yield return new WaitForSeconds(posSec / posTicks);
-        if (posCounter < posTicks)
+        if (posCounter < posTicks && isObjectInLazer)
         {
             StartCoroutine(PositionChangeBegin());
+        }
+        else if(!isObjectInLazer)
+        {
+            StartCoroutine(PositionChangeEnd());
         }
         else
         {
             isMoved = true;
-            posCounter = 0;
             isActivated = false;
         }
     }
     IEnumerator PositionChangeEnd()
     {
         transform.position = transform.position - posMove;
-        posCounter++;
+        posCounter--;
         yield return new WaitForSeconds(posSec / posTicks);
-        if (posCounter < posTicks)
+        if (posCounter > 0)
+        {
             StartCoroutine(PositionChangeEnd());
+        }
         else
         {
             isMoved = false;
-            posCounter = 0;
             isActivated = false;
         }
     }
@@ -205,6 +211,13 @@ public class SensorTarget : MonoBehaviour
         if(!reversedTeleport)
         {
             yield return new WaitForSeconds(teleportDelayTime);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<Rigidbody>())
+        {
+           // gameObject.ch
         }
     }
 }
